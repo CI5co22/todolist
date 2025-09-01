@@ -3,9 +3,9 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class Modelos_Model extends Model
+class tareas extends Model
 {
-    protected $table      = 'modelos';
+    protected $table      = 'tareas';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
@@ -13,7 +13,7 @@ class Modelos_Model extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['id','nombre'];
+    protected $allowedFields = ['id','nombre','estado','fecha'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -26,6 +26,16 @@ class Modelos_Model extends Model
 //     protected $createdField  = 'created_at'; //nombre de la comuna
 //     protected $updatedField  = 'updated_at'; //--
 //     protected $deletedField  = 'deleted_at'; //--
+
+
+    public function estado($estado)
+    {
+        return $this->db->table('tareas')
+        ->select('*')
+        ->where('estado',$estado)
+        ->get()
+        ->getResult();
+    }
 
  }
 

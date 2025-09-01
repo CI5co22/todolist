@@ -97,25 +97,30 @@ header h1
   font-size: 14px;
 }
 </style>
-<header data-bs-theme="dark" class="mt-4 mb-4">
+<header data-bs-theme="dark" class="mt-4 mb-4 text-center">
   <h1>TODO LIST</h1>
 </header>
 
 <section class=" main container w-50  p-3">
     <div class="top">
-      <button class="btn add ms-2 text-white fw-bold">Add Task</button>
-      <select class="filter form-select w-25 fw-bold" name="filter" id="">
-        <option value="">All</option>
-        <option value="">Complete</option>
-        <option value="">Incomplete</option>
-      </select>
+        <button type="button" class="btn add ms-2 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Task</button>
+      <form action="./" method="GET">
+        <select onchange="this.form.submit()" class="filter form-select w-25 fw-bold" name="mostrar" id="">
+          <option >Mostrar</option>
+          <option value="2">All</option>
+          <option value="1">Complete</option>
+          <option value="0">Incomplete</option>
+        </select>
+      </form>
+      
     </div>
     <div class="list ">
-      <div class="task d-flex ">
+      <?php foreach($lista as $tarea): ?>
+      <div class="task d-flex mb-3">
         <input type="checkbox" name="" id="">
         <div class="task_info">
-        <p class="m-0 mt-3">Task name</p>
-        <p class="date">Fecha</p>
+        <p class="m-0 mt-3"><?= ($tarea->estado == 0 ) ? $tarea->nombre : '<s>'.$tarea->nombre.'</s>'  ?></p>
+        <p class="date"><?= $tarea->fecha ?></p>
         </div>
         <div class="actions">
           <form action="" method="post">
@@ -124,8 +129,42 @@ header h1
           </form>
         </div>
       </div>
+      <?php endforeach ?>
     </div>
+    
 </section>
 
+
+<!-- modal -->
+ 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="./">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Título</label>
+            <input type="text" name="title" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Estado</label>
+            <select name="status" class="form-select" id="">
+              <option value="1">Complete</option>
+              <option value="0">Incomplete</option>
+            </select>
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="add" class="btn btn-primary">Send message</button>
+      </div>
+      </form>
+    </div>
+  </div>
+      </div>
 
 <?=  $this->endSection() ?>

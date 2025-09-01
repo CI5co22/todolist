@@ -1,28 +1,44 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\Productos_Model;
-use App\Models\CategoriasModel;
+use App\Models\tareas;
 use Config\Services;
 
 class Principal extends BaseController
 {
-    private $model_cat;
-    private $model_product;
+    private $modelo;
     
     public function __construct()
     {
-        // $this->model_cat = new CategoriasModel;
-        // $this->model_product = new Productos_Model;
+        $this->modelo = new tareas;
+      
     }
 
     public function index()
     {
-        $datos['title'] = 'Home';
-        // $datos['cat'] = $this->model_cat->findAll();
+        $datos['title'] = 'TODO';
+
+        if(isset($_GET['mostrar']))
+        {
+            $status = $_GET['mostrar'];
+
+            if($status == 2)
+            {
+                $datos['lista'] = $this->modelo->findAll();
+            }
+            else
+            {
+                $datos['lista'] = $this->modelo->estado($status);
+            }
+        }
+
+        if(isset($_POST['add']))
+        {
+            return $_POST['add'];
+        }
     
         return view('principal',$datos);
     }
 
-   
+    
 }
