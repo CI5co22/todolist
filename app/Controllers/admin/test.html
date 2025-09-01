@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nose</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="body">
+
+    <style>
+        .shopping-cart
+        {
+            border: 1px solid;
+            position: fixed;
+            top: 2%;
+            right: -50rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            box-shadow: 0 0rem .8rem .01rem;
+            width: 20rem;
+            background: #fff;
+            transition: .5s linear;
+            z-index: 1000;
+        }
+
+        .shopping-cart.active
+        {
+            right: 1rem;
+            transition: .5s linear;
+        }
+
+        #overlay 
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+            visibility: hidden; /* Oculto inicialmente */
+            opacity: 0; /* Totalmente transparente */
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            z-index: 100; /* Debajo del carrito */
+        }
+
+        #overlay.active 
+        {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .shopping-cart .box
+        {
+            border: .2rem solid #fff;
+            border-radius: .4rem;
+            display:flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            margin: 1rem 0;
+            box-shadow: 0 0 .3rem .01rem;
+        }
+
+        .shopping-cart .box img
+        {
+            height: 5rem;
+        }
+
+        .shopping-cart .box .fa-trash
+        {
+            font-size: 1.2rem;
+            position: absolute;
+            right: 2rem;
+            cursor: pointer;
+            color: rgba(209, 28, 28, 0.546);
+        }
+
+        .shopping-cart .box .fa-trash:hover
+        {
+            color: rgba(209, 28, 28, 1); 
+        }
+
+        .product_name
+        {
+            margin: 0 0;
+        }
+
+        .shopping-cart .total
+        {
+            font-size: 1.5rem;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .header
+        {
+            display:flex;
+        }
+    </style>
+
+
+<button id="cart_btn">Cart</button>
+    <div class="shopping-cart">
+        <div class="header">
+            <h2>Carrito de compras</h2>
+            <button id="cart_btn_close">x</button>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-trash"></i>
+            <img src="https://moplayeras.com/cdn/shop/products/92074_F--AZULREY_2048x.jpg?v=1682361453" alt="">
+            <div class="content">
+                <h3 class="product_name">Playera casual</h3>
+                <span class="price">Q345</span>
+                <span class="quantity">1</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-trash"></i>
+            <img src="https://moplayeras.com/cdn/shop/products/92074_F--AZULREY_2048x.jpg?v=1682361453" alt="">
+            <div class="content">
+                <h3 class="product_name">Playera casual</h3>
+                <span class="price">Q345</span>
+                <span class="quantity">1</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-trash"></i>
+            <img src="https://moplayeras.com/cdn/shop/products/92074_F--AZULREY_2048x.jpg?v=1682361453" alt="">
+            <div class="content">
+                <h3 class="product_name">Playera casual</h3>
+                <span class="price">Q345</span>
+                <span class="quantity">1</span>
+            </div>
+        </div>
+
+        <div class="total">Total : 1005 </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    
+<script>
+    let shoppingCart = document.querySelector('.shopping-cart');
+    let overlay = document.querySelector('#overlay');
+
+    document.querySelector('#cart_btn').onclick = () =>
+    {
+        shoppingCart.classList.toggle('active'); 
+        overlay.classList.add('active'); // Oscurece el fondo
+    }
+
+    document.querySelector('#cart_btn_close').onclick = () =>
+    {
+        shoppingCart.classList.remove('active'); // Oculta el carrito
+        overlay.classList.remove('active'); // Restaura el fondo 
+    }
+
+    overlay.onclick = () => 
+    {
+    shoppingCart.classList.remove('active');
+    overlay.classList.remove('active');
+    };
+
+
+</script>
+
+</body>
+</html>
