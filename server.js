@@ -2,8 +2,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// Usar puerto 8080 que es común en Railway
-const port = process.env.PORT || 8080;
+// Usar SOLO la variable PORT de Railway, sin puerto por defecto
+const port = process.env.PORT;
+
+if (!port) {
+    console.error('ERROR: Variable PORT no está definida');
+    process.exit(1);
+}
 
 console.log(`Starting server on port: ${port}`);
 console.log(`Environment variables:`, process.env);
