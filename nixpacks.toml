@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["php81", "nginx", "php81Extensions.intl", "php81Extensions.mbstring"]
+nixPkgs = ["php81", "php81Extensions.intl", "php81Extensions.mbstring", "php81Packages.composer", "nginx"]
 
 [phases.install]
-cmds = ["composer install --ignore-platform-reqs"]
+cmds = ["composer install"]
 
 [phases.build]
 cmds = ["composer install --no-dev --optimize-autoloader"]
