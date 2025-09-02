@@ -1,20 +1,46 @@
 <?php
-// DEBUG: Verificar si los archivos existen
-error_log("🟢 Index.php accessed");
+/// DEBUG COMPLETO - AL PRINCIPIO DEL ARCHIVO
+error_log("🎯 INDEX.PHP INICIADO - " . date('Y-m-d H:i:s'));
+
+// 1. Verificar VENDOR
+$vendorDir = __DIR__ . '/../vendor';
+if (!is_dir($vendorDir)) {
+    error_log("❌ VENDOR NO EXISTE: " . $vendorDir);
+    die("ERROR: Vendor directory missing");
+}
+error_log("✅ VENDOR ENCONTRADO");
+
+// 2. Verificar AUTOLOAD
+$autoloadFile = $vendorDir . '/autoload.php';
+if (!file_exists($autoloadFile)) {
+    error_log("❌ AUTOLOAD.PHP NO EXISTE: " . $autoloadFile);
+    die("ERROR: Autoload file missing");
+}
+error_log("✅ AUTOLOAD.PHP ENCONTRADO");
+
+// 3. Cargar autoload
+require $autoloadFile;
+error_log("✅ AUTOLOAD CARGADO");
+
+// 4. Verificar PATHS.PHP
 $pathsFile = __DIR__ . '/../app/Config/Paths.php';
-$bootFile = __DIR__ . '/../system/Boot.php';
-
 if (!file_exists($pathsFile)) {
-    error_log("❌ PATHS.PHP NOT FOUND: " . $pathsFile);
-    die("ERROR: Paths.php not found");
+    error_log("❌ PATHS.PHP NO EXISTE: " . $pathsFile);
+    die("ERROR: Paths.php missing");
 }
+error_log("✅ PATHS.PHP ENCONTRADO");
 
-if (!file_exists($bootFile)) {
-    error_log("❌ BOOT.PHP NOT FOUND: " . $bootFile);
-    die("ERROR: Boot.php not found");
+// 5. Verificar SYSTEM DIRECTORY
+$systemDir = __DIR__ . '/../system/Boot.php';
+if (!file_exists($systemDir)) {
+    error_log("❌ SYSTEM DIRECTORY NO EXISTE: " . $systemDir);
+    die("ERROR: System directory missing");
 }
+error_log("✅ SYSTEM DIRECTORY ENCONTRADO");
 
-error_log("✅ All files found");
+error_log("🏁 TODO VERIFICADO - INICIANDO CODEIGNITER");
+
+
 
 $pathsFile = __DIR__ . '/../app/Config/Paths.php';
 $systemDir = __DIR__ . '/../system/Boot.php';
