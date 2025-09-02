@@ -3,7 +3,7 @@ builder = "nixpacks"
 buildCommand = "composer install --no-dev --optimize-autoloader"
 
 [deploy]
-startCommand = "php start_minimal.php"
+startCommand = "php -S 0.0.0.0:$PORT -t public public/index.php"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
