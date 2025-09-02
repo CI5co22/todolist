@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL;
+    public string $baseURL = "https://todolist-production-c4a7.up.railway.app/";
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -205,10 +205,10 @@ class App extends BaseConfig
     {
         parent::__construct();
 
-        // Detecta automáticamente protocolo y host asignado por Railway
-        $this->baseURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
-                         . '://'
-                         . ($_SERVER['HTTP_HOST'] ?? 'localhost')
-                         . '/';
+        // // Detecta automáticamente protocolo y host asignado por Railway
+        // $this->baseURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
+        //                  . '://'
+        //                  . ($_SERVER['HTTP_HOST'] ?? 'localhost')
+        //                  . '/';
     }
 }
