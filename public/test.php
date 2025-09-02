@@ -1,4 +1,4 @@
 <?php
-echo "✅ PHP FUNCIONANDO!";
-echo "PORT: " . ($_SERVER['SERVER_PORT'] ?? 'NO_SET');
+echo "✅ PHP FUNCIONA SOLO";
+error_log("TEST SIMPLE OK");
 ?>

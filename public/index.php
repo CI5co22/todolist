@@ -4,6 +4,12 @@ ini_set('display_errors', '1');
 ini_set('log_errors', '1');
 ini_set('error_log', __DIR__ . '/../php-errors.log');
 
+
+echo "🔍 INICIANDO CODEIGNITER...";
+error_log("🚀 STARTING CODEIGNITER");
+
+$pathsFile = __DIR__ . '/../app/Config/Paths.php';
+$systemDir = __DIR__ . '/../system/Boot.php';
 // FIX PARA RAILWAY - PUERTO CORRECTO
 $port = getenv('PORT') ?: '1111';
 $_SERVER['SERVER_PORT'] = $port;
