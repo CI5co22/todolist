@@ -1,12 +1,17 @@
 <?php
+// ---------------------------------------------------------------
+// RAILWAY FIX - LEER PUERO DE VARIABLE DE ENTORNO
+// ---------------------------------------------------------------
+$port = getenv('PORT') ?: '1111';
+$_SERVER['SERVER_PORT'] = $port;
+$_SERVER['HTTP_HOST'] = getenv('RAILWAY_STATIC_URL') ?: ('localhost:' . $port);
 
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION
  *---------------------------------------------------------------
  */
-
-$minPhpVersion = '8.1'; // If you update this, don't forget to update `spark`.
+$minPhpVersion = '8.1';
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
         'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
@@ -16,7 +21,6 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
     header('HTTP/1.1 503 Service Unavailable.', true, 503);
     echo $message;
-
     exit(1);
 }
 
