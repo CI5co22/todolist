@@ -6,6 +6,13 @@ if (!$port) {
 }
 
 $host = '0.0.0.0';
-$command = "php -S {$host}:{$port} -t public public/index.php 2>&1";
-echo "Command: {$command}\n";
+
+echo "=== CODEIGNITER STARTUP ===\n";
+echo "PHP Version: " . PHP_VERSION . "\n";
+echo "Working Directory: " . getcwd() . "\n";
+echo "ENV PORT: " . $port . "\n";
+
+$command = "php -S {$host}:{$port} -t public public/index.php";
+echo "Ejecutando: {$command}\n";
+
 passthru($command);
