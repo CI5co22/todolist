@@ -17,10 +17,25 @@ if (isset($_ENV['RAILWAY_STATIC_URL'])) {
 echo "=== RAILWAY STARTUP ===\n";
 echo "PHP Version: " . PHP_VERSION . "\n";
 echo "Working Directory: " . getcwd() . "\n";
-echo "PORT: " . ($_ENV['PORT'] ?? 'undefined') . "\n";
+
+// Obtener el puerto de múltiples fuentes posibles
+$port = null;
+if (isset($_ENV['PORT'])) {
+    $port = $_ENV['PORT'];
+    echo "PORT from ENV: {$port}\n";
+} elseif (isset($_SERVER['PORT'])) {
+    $port = $_SERVER['PORT'];
+    echo "PORT from SERVER: {$port}\n";
+} elseif (isset($_ENV['RAILWAY_PORT'])) {
+    $port = $_ENV['RAILWAY_PORT'];
+    echo "PORT from RAILWAY_PORT: {$port}\n";
+} else {
+    $port = 8080;
+    echo "PORT default: {$port}\n";
+}
+
 echo "Environment: " . ($_ENV['CI_ENVIRONMENT'] ?? 'undefined') . "\n";
 
-$port = $_ENV['PORT'] ?? 8080;
 $host = '0.0.0.0';
 
 echo "Starting CodeIgniter server on {$host}:{$port}\n";
