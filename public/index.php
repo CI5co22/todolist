@@ -5,8 +5,7 @@
  * CHECK PHP VERSION
  *---------------------------------------------------------------
  */
-
-$minPhpVersion = '8.1'; // If you update this, don't forget to update `spark`.
+$minPhpVersion = '8.1';
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
         'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
@@ -16,7 +15,6 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
     header('HTTP/1.1 503 Service Unavailable.', true, 503);
     echo $message;
-
     exit(1);
 }
 
@@ -25,12 +23,7 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
  * SET THE CURRENT DIRECTORY
  *---------------------------------------------------------------
  */
-// Detectar si estamos en Railway
-if (isset($_ENV['RAILWAY_ENVIRONMENT']) || isset($_ENV['PORT'])) {
-    define('ENVIRONMENT', 'railway');
-} else {
-    define('ENVIRONMENT', 'production');
-}
+define('ENVIRONMENT', 'production');
 
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
@@ -44,19 +37,16 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION
  *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
  */
-
-// LOAD OUR PATHS CONFIG FILE
-// This is the line that might need to be changed, depending on your folder structure.
-require FCPATH . '../app/Config/Paths.php';
-// ^^^ Change this line if you move your application folder
-
+require FCPATH . '/../app/Config/Paths.php';
 $paths = new Config\Paths();
-
-// LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
 
-exit(CodeIgniter\Boot::bootWeb($paths));
+/*
+ *---------------------------------------------------------------
+ * START CODEIGNITER
+ *---------------------------------------------------------------
+ */
+$app = CodeIgniter\Boot::bootWeb($paths);
+
+// NO EXIT, dejar que el proceso quede vivo para Railway
