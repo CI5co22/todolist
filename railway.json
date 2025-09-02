@@ -4,7 +4,7 @@
     "buildCommand": "composer install --no-dev --optimize-autoloader"
   },
   "deploy": {
-    "startCommand": "php start_codeigniter.php",
+    "startCommand": "php railway_start.php",
     "healthcheckPath": "/",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",
