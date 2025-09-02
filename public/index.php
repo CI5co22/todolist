@@ -1,44 +1,31 @@
 <?php
-/// DEBUG COMPLETO - AL PRINCIPIO DEL ARCHIVO
+// DEBUG COMPLETO - AL PRINCIPIO
 error_log("🎯 INDEX.PHP INICIADO - " . date('Y-m-d H:i:s'));
+echo "🔍 DEBUG MODE - CHECK LOGS";
 
-// 1. Verificar VENDOR
-$vendorDir = __DIR__ . '/../vendor';
-if (!is_dir($vendorDir)) {
-    error_log("❌ VENDOR NO EXISTE: " . $vendorDir);
-    die("ERROR: Vendor directory missing");
+// Verificar variables de entorno
+$port = getenv('PORT') ?: '8080';
+error_log("PORT: " . $port);
+echo "PORT: " . $port;
+
+// Verificar si estamos en Railway
+error_log("RAILWAY: " . (getenv('RAILWAY') ? 'YES' : 'NO'));
+
+// Verificar archivos críticos
+$files = [
+    '../vendor/autoload.php',
+    '../app/Config/Paths.php', 
+    '../system/Boot.php'
+];
+
+foreach ($files as $file) {
+    $fullPath = __DIR__ . '/' . $file;
+    if (file_exists($fullPath)) {
+        error_log("✅ " . $file . " EXISTS");
+    } else {
+        error_log("❌ " . $file . " MISSING");
+    }
 }
-error_log("✅ VENDOR ENCONTRADO");
-
-// 2. Verificar AUTOLOAD
-$autoloadFile = $vendorDir . '/autoload.php';
-if (!file_exists($autoloadFile)) {
-    error_log("❌ AUTOLOAD.PHP NO EXISTE: " . $autoloadFile);
-    die("ERROR: Autoload file missing");
-}
-error_log("✅ AUTOLOAD.PHP ENCONTRADO");
-
-// 3. Cargar autoload
-require $autoloadFile;
-error_log("✅ AUTOLOAD CARGADO");
-
-// 4. Verificar PATHS.PHP
-$pathsFile = __DIR__ . '/../app/Config/Paths.php';
-if (!file_exists($pathsFile)) {
-    error_log("❌ PATHS.PHP NO EXISTE: " . $pathsFile);
-    die("ERROR: Paths.php missing");
-}
-error_log("✅ PATHS.PHP ENCONTRADO");
-
-// 5. Verificar SYSTEM DIRECTORY
-$systemDir = __DIR__ . '/../system/Boot.php';
-if (!file_exists($systemDir)) {
-    error_log("❌ SYSTEM DIRECTORY NO EXISTE: " . $systemDir);
-    die("ERROR: System directory missing");
-}
-error_log("✅ SYSTEM DIRECTORY ENCONTRADO");
-
-error_log("🏁 TODO VERIFICADO - INICIANDO CODEIGNITER");
 
 
 
