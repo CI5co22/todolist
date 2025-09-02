@@ -2,8 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// Usar puerto 80 (HTTP estándar) que Railway debería permitir
-const port = process.env.PORT || 80;
+// Usar puerto 8080 que es común en Railway
+const port = process.env.PORT || 8080;
 
 console.log(`Starting server on port: ${port}`);
 console.log(`Environment variables:`, process.env);
