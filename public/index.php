@@ -25,7 +25,12 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
  * SET THE CURRENT DIRECTORY
  *---------------------------------------------------------------
  */
-define('ENVIRONMENT', 'production');
+// Detectar si estamos en Railway
+if (isset($_ENV['RAILWAY_ENVIRONMENT']) || isset($_ENV['PORT'])) {
+    define('ENVIRONMENT', 'railway');
+} else {
+    define('ENVIRONMENT', 'production');
+}
 
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
