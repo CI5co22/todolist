@@ -3,33 +3,32 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-echo "🚀 Iniciando servidor PHP para Railway...\n";
+echo "=== RAILWAY STARTUP SCRIPT ===\n";
+echo "PHP Version: " . PHP_VERSION . "\n";
+echo "Working Directory: " . getcwd() . "\n";
 
-$port = $_ENV['PORT'] ?? 8080;
-$host = '0.0.0.0';
-
-echo "📡 Servidor iniciando en {$host}:{$port}\n";
-echo "📁 Directorio de trabajo: " . getcwd() . "\n";
-echo "📂 Directorio público: " . __DIR__ . "/public\n";
-
-// Verificar que los archivos necesarios existen
-$requiredFiles = [
-    'public/index.php',
-    'app/Config/Paths.php',
-    'system/Boot.php'
-];
-
-foreach ($requiredFiles as $file) {
-    if (file_exists($file)) {
-        echo "✅ {$file} existe\n";
-    } else {
-        echo "❌ {$file} NO existe\n";
-    }
+// Obtener el puerto de Railway
+$port = null;
+if (isset($_ENV['PORT'])) {
+    $port = $_ENV['PORT'];
+    echo "PORT from ENV: {$port}\n";
+} elseif (isset($_SERVER['PORT'])) {
+    $port = $_SERVER['PORT'];
+    echo "PORT from SERVER: {$port}\n";
+} else {
+    $port = 8080;
+    echo "PORT default: {$port}\n";
 }
 
-// Iniciar el servidor
-$command = "php -S {$host}:{$port} -t public public/index.php";
-echo "🔧 Comando: {$command}\n";
+echo "Environment: " . ($_ENV['CI_ENVIRONMENT'] ?? 'undefined') . "\n";
+
+$host = '0.0.0.0';
+
+echo "Starting CodeIgniter server on {$host}:{$port}\n";
+
+// Comando para CodeIgniter
+$command = "php -S {$host}:{$port} -t public public/index.php 2>&1";
+echo "Command: {$command}\n";
 
 passthru($command);
 ?>
