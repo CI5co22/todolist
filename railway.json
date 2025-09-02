@@ -4,8 +4,8 @@
     "buildCommand": "composer install --no-dev --optimize-autoloader"
   },
   "deploy": {
-    "startCommand": "php start.php",
-    "healthcheckPath": "/test.php",
+    "startCommand": "php start_alt.php",
+    "healthcheckPath": "/basic.php",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
