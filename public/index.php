@@ -1,5 +1,8 @@
 <?php
-
+// Antes del require
+error_log("FCPATH: " . FCPATH);
+error_log("Full path: " . FCPATH . '/../app/Config/Paths.php');
+error_log("File exists: " . (file_exists(FCPATH . '/../app/Config/Paths.php') ? 'YES' : 'NO'));
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION
