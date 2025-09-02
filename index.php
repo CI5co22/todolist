@@ -25,7 +25,7 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
  * SET THE CURRENT DIRECTORY
  *---------------------------------------------------------------
  */
-define('ENVIRONMENT', 'development');
+define('ENVIRONMENT', 'production');
 
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);

@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost/todolist/public';
+    public string $baseURL;
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -198,5 +198,17 @@ class App extends BaseConfig
      * @see http://www.html5rocks.com/en/tutorials/security/content-security-policy/
      * @see http://www.w3.org/TR/CSP/
      */
+
     public bool $CSPEnabled = false;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Detecta automáticamente protocolo y host asignado por Railway
+        $this->baseURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
+                         . '://'
+                         . ($_SERVER['HTTP_HOST'] ?? 'localhost')
+                         . '/';
+    }
 }
