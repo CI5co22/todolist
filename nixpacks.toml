@@ -1,5 +1,11 @@
+[phases.setup]
+nixPkgs = ["php81", "nginx", "php81Extensions.intl", "php81Extensions.mbstring"]
+
+[phases.install]
+cmds = ["composer install --ignore-platform-reqs"]
+
 [phases.build]
 cmds = ["composer install --no-dev --optimize-autoloader"]
 
-[phases.start]
-cmd = "heroku-php-apache2 public/"
+[start]
+cmd = "php-fpm -D && nginx -g 'daemon off;'"
