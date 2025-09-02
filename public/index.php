@@ -1,5 +1,10 @@
 <?php
+// FIX PARA RAILWAY - PUERTO CORRECTO
+$port = getenv('PORT') ?: '1111';
+$_SERVER['SERVER_PORT'] = $port;
+$_SERVER['HTTP_HOST'] = getenv('RAILWAY_STATIC_URL') ?: ('localhost:' . $port);
 
+// ... el resto de tu código
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION
