@@ -18,10 +18,13 @@ class Test extends BaseController
     
     public function simple()
     {
-        // Respuesta HTML simple
-        echo "<h1>✅ CodeIgniter funciona!</h1>";
-        echo "<p>Fecha: " . date('Y-m-d H:i:s') . "</p>";
-        echo "<p>PHP: " . PHP_VERSION . "</p>";
-        echo "<p>Entorno: " . ENVIRONMENT . "</p>";
+        // Respuesta HTML simple usando response
+        $html = "<h1>✅ CodeIgniter funciona!</h1>";
+        $html .= "<p>Fecha: " . date('Y-m-d H:i:s') . "</p>";
+        $html .= "<p>PHP: " . PHP_VERSION . "</p>";
+        $html .= "<p>Entorno: " . ENVIRONMENT . "</p>";
+        $html .= "<p>Base URL: " . base_url() . "</p>";
+        
+        return $this->response->setContentType('text/html')->setBody($html);
     }
 }
