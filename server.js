@@ -2,7 +2,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const port = process.env.PORT || 8080;
+// Usar SOLO la variable PORT de Railway
+const port = process.env.PORT;
+
+if (!port) {
+    console.error('ERROR: Variable PORT no está definida');
+    process.exit(1);
+}
 
 const server = http.createServer((req, res) => {
     console.log(`Request: ${req.method} ${req.url}`);
