@@ -1,12 +1,20 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-ini_set('log_errors', '1');
-ini_set('error_log', __DIR__ . '/../php-errors.log');
+// DEBUG: Verificar si los archivos existen
+error_log("🟢 Index.php accessed");
+$pathsFile = __DIR__ . '/../app/Config/Paths.php';
+$bootFile = __DIR__ . '/../system/Boot.php';
 
+if (!file_exists($pathsFile)) {
+    error_log("❌ PATHS.PHP NOT FOUND: " . $pathsFile);
+    die("ERROR: Paths.php not found");
+}
 
-echo "🔍 INICIANDO CODEIGNITER...";
-error_log("🚀 STARTING CODEIGNITER");
+if (!file_exists($bootFile)) {
+    error_log("❌ BOOT.PHP NOT FOUND: " . $bootFile);
+    die("ERROR: Boot.php not found");
+}
+
+error_log("✅ All files found");
 
 $pathsFile = __DIR__ . '/../app/Config/Paths.php';
 $systemDir = __DIR__ . '/../system/Boot.php';
