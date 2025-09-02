@@ -1,1 +1,1 @@
-web: php start_ci.php
+web: php -S 0.0.0.0:$PORT -t public public/ultra_simple.php
