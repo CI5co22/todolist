@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php81", "php81Extensions.intl", "php81Extensions.mbstring", "php81Packages.composer", "nginx"]
+nixPkgs = ["php81", "php81Extensions.intl", "php81Extensions.mbstring", "php81Packages.composer"]
 
 [phases.install]
 cmds = ["composer install"]
@@ -8,4 +8,4 @@ cmds = ["composer install"]
 cmds = ["composer install --no-dev --optimize-autoloader"]
 
 [start]
-cmd = "php-fpm -D && nginx -g 'daemon off;'"
+cmd = "cd public && php -S 0.0.0.0:$PORT"
