@@ -37,6 +37,26 @@ class tareas extends Model
         ->getResult();
     }
 
+    public function checkEstado($id)
+    {
+        return $this->db->table('tareas')
+        ->update(['estado' => 1], ['id' => $id]);
+    }
+
+    public function uncheckEstado($id)
+    {
+        return $this->db->table('tareas')
+        ->update(['estado' => 0], ['id' => $id]);
+
+    }
+
+    public function updTitle($id,$title)
+    {
+        $this->db->table('tareas')
+        ->where('id', $id)
+        ->update(['nombre' => $title]);
+    }
+
  }
 
 ?>

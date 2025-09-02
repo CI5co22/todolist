@@ -31,20 +31,20 @@ header h1
   border-radius: 8px;
   position: relative;
 }
-.task input
-{
-  width: 2rem; 
+
+.task form {
+  display: flex;
+  align-items: center;
 }
 
-.task input:checked
-{
-  background-color: var(--principal)
-}
+
 .actions
 {
    position: absolute;
    right: 0;
    margin: 1.3rem;
+    display: flex;
+  align-items: center;
 }
 
 .actions form .btn
@@ -117,15 +117,24 @@ header h1
     <div class="list ">
       <?php foreach($lista as $tarea): ?>
       <div class="task d-flex mb-3">
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="check" value="<?= $tarea->id ?>" 
+              style="width: 2rem;" 
+              onChange="document.getElementById('form-<?= $tarea->id ?>').submit()">
+        
+        <form id="form-<?= $tarea->id ?>" method="POST" action="./" style="display:none;">
+          <input type="hidden" name="check" value="<?= $tarea->id ?>">
+          <input type="hidden" name="lastEstado" value="<?= $tarea->estado ?>">
+        </form>
+
         <div class="task_info">
         <p class="m-0 mt-3"><?= ($tarea->estado == 0 ) ? $tarea->nombre : '<s>'.$tarea->nombre.'</s>'  ?></p>
         <p class="date"><?= $tarea->fecha ?></p>
         </div>
         <div class="actions">
-          <form action="" method="post">
-            <button class="btn"><i class="fa-solid fa-edit"></i></button>
-            <button class="btn"><i class="fa-solid fa-trash"></i></button>
+          
+            <button   data-id="<?= $tarea->id ?>" data-title="<?= $tarea->nombre ?>" name="edit" class="btn" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@mdo"><i class="fa-solid fa-edit"></i></button>
+          <form action="./" method="post" >
+            <button name="delete" value="<?= $tarea->id ?>" class="btn"><i class="fa-solid fa-trash"></i></button>
           </form>
         </div>
       </div>
@@ -148,23 +157,63 @@ header h1
         <form method="POST" action="./">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Título</label>
-            <input type="text" name="title" class="form-control" id="recipient-name">
+            <input  required='required' type="text" name="title" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Estado</label>
             <select name="status" class="form-select" id="">
-              <option value="1">Complete</option>
               <option value="0">Incomplete</option>
+               <option value="1">Complete</option>
             </select>
           </div>
         
       </div>
       <div class="modal-footer">
-        <button type="submit" name="add" class="btn btn-primary">Send message</button>
+        <button type="submit" name="add" class="btn btn-primary">Agregar tarea</button>
       </div>
       </form>
     </div>
   </div>
-      </div>
+</div>
+
+<!-- modal editar -->
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="./">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editModalLabel">Editar tarea</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         
+          <div class="mb-3">
+            <label class="col-form-label">Título</label>
+            <input required type="text" name="title" class="form-control" id="edit-title">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="update"  id="edit-id" class="btn btn-primary">Actualizar tarea</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const editModal = document.getElementById('editModal')
+  editModal.addEventListener('show.bs.modal', event => {
+  const button = event.relatedTarget
+  
+  const id = button.getAttribute('data-id')
+  const title = button.getAttribute('data-title')
+  
+  editModal.querySelector('#edit-id').value = id
+  editModal.querySelector('#edit-title').value = title
+})
+</script>
+
 
 <?=  $this->endSection() ?>
