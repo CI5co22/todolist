@@ -7,17 +7,33 @@ echo "=== RAILWAY STARTUP SCRIPT ===\n";
 echo "PHP Version: " . PHP_VERSION . "\n";
 echo "Working Directory: " . getcwd() . "\n";
 
+// Mostrar todas las variables de entorno disponibles
+echo "=== VARIABLES DE ENTORNO DISPONIBLES ===\n";
+foreach ($_ENV as $key => $value) {
+    echo "ENV[{$key}] = {$value}\n";
+}
+
+echo "\n=== VARIABLES DE SERVIDOR DISPONIBLES ===\n";
+foreach ($_SERVER as $key => $value) {
+    if (strpos($key, 'PORT') !== false || strpos($key, 'RAILWAY') !== false) {
+        echo "SERVER[{$key}] = {$value}\n";
+    }
+}
+
 // Obtener el puerto de Railway
 $port = null;
 if (isset($_ENV['PORT'])) {
     $port = $_ENV['PORT'];
-    echo "PORT from ENV: {$port}\n";
+    echo "\nPORT from ENV: {$port}\n";
 } elseif (isset($_SERVER['PORT'])) {
     $port = $_SERVER['PORT'];
-    echo "PORT from SERVER: {$port}\n";
+    echo "\nPORT from SERVER: {$port}\n";
+} elseif (isset($_ENV['RAILWAY_PORT'])) {
+    $port = $_ENV['RAILWAY_PORT'];
+    echo "\nPORT from RAILWAY_PORT: {$port}\n";
 } else {
     $port = 8080;
-    echo "PORT default: {$port}\n";
+    echo "\nPORT default: {$port} (NO CONFIGURADO EN RAILWAY)\n";
 }
 
 echo "Environment: " . ($_ENV['CI_ENVIRONMENT'] ?? 'undefined') . "\n";
