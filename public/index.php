@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/../php-errors.log');
+
 // FIX PARA RAILWAY - PUERTO CORRECTO
 $port = getenv('PORT') ?: '1111';
 $_SERVER['SERVER_PORT'] = $port;
