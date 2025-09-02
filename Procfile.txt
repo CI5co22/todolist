@@ -1,1 +1,1 @@
-web: php -S 0.0.0.0:$PORT -t public public/minimal.php
+web: php start_minimal.php
