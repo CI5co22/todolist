@@ -13,10 +13,10 @@
             <span class="add-icon"><i class="fa-solid fa-plus"></i></span>
         </button>
         
-        <div class="filter-container">
-            <form action="./" method="GET">
+        <div class="filter-container d-flex">
+            <form action="./" method="GET" class="me-1">
                 <select onchange="this.form.submit()" class="filter form-select fw-bold" name="mostrar">
-                    <option value="2" disabled selected>All</option>
+                    <option value="2" selected>All</option>
                     <option value="1">Complete</option>
                     <option value="0">Incomplete</option>
                 </select>
