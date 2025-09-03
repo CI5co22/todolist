@@ -3,7 +3,6 @@ $(document).on("change", ".chk-estado", function () {
     let id = $chk.data("id");
     let lastEstado = $chk.data("estado");
     
-    // Buscar el texto: hermano .task_info -> hijo .tarea-nombre
     let $texto = $chk.siblings(".task_info").find(".tarea-nombre");
 
     $.ajax({
