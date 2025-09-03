@@ -25,7 +25,7 @@
             </form>
             <form action="./" method="GET" class="ms-1">
                 <select onchange="this.form.submit()" class="filter form-select fw-bold" name="mostrar">
-                    <option disabled>Mostrar</option>
+                    <option disabled selected>Mostrar</option>
                     <option value="verTodo">All</option>
                     <option value="1">Complete</option>
                     <option value="0">Incomplete</option>
