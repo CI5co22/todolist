@@ -5,7 +5,7 @@ $(document).ready(function () {
         let nuevoEstado = $(this).is(":checked") ? 1 : 0;
 
         $.ajax({
-            url: "<?= base_url('cambiarEstado') ?>",
+            url: urlCambiarEstado,
             type: "POST",
             data: { check: id, lastEstado: lastEstado },
             success: function (resp) {
@@ -14,10 +14,9 @@ $(document).ready(function () {
                     $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
                 }
             },
-            error: function () {
+            error: function(xhr, status, error){
                 console.error("Error AJAX:", status, error);
-                console.error("Respuesta servidor:", xhr.responseText);
-                alert("Error al actualizar tarea");
+                alert('error ddd');
             }
         });
     });

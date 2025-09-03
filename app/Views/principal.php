@@ -114,6 +114,10 @@
 </div>
 
 <script>
+    const urlCambiarEstado = "<?= base_url('cambiarEstado') ?>";
+</script>
+
+<script>
 const editModal = document.getElementById('editModal')
 editModal.addEventListener('show.bs.modal', event => {
     const button = event.relatedTarget
