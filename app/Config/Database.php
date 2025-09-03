@@ -190,17 +190,20 @@ class Database extends Config
     public function __construct()
     {
         parent::__construct();
-         if (ENVIRONMENT === 'production') {
-        $this->default['hostname'] = getenv('MYSQLHOST') ?: $this->default['hostname'];
-        $this->default['username'] = getenv('MYSQLUSER') ?: $this->default['username'];
-        $this->default['password'] = getenv('MYSQLPASSWORD') ?: $this->default['password'];
-        $this->default['database'] = getenv('MYSQL_DATABASE') ?: $this->default['database'];
-        $this->default['port']     = getenv('MYSQLPORT') ?: $this->default['port'];
-        $this->default['DBDebug']  = false; // opcional: no mostrar errores de DB en producción
-    }
-        // Ensure that we always set the database group to 'tests' if
-        // we are currently running an automated test suite, so that
-        // we don't overwrite live data on accident.
+        
+        if (ENVIRONMENT === 'production') {
+            $this->default['hostname'] = getenv('MYSQLHOST') ?: $this->default['hostname'];
+            $this->default['username'] = getenv('MYSQLUSER') ?: $this->default['username'];
+            $this->default['password'] = getenv('MYSQLPASSWORD') ?: $this->default['password'];
+            $this->default['database'] = getenv('MYSQL_DATABASE') ?: $this->default['database'];
+            
+            // ← ¡CONVERTIR A ENTERO!
+            $port = getenv('MYSQLPORT');
+            $this->default['port'] = $port ? (int) $port : $this->default['port'];
+            
+            $this->default['DBDebug'] = false;
+        }
+        
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
