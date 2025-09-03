@@ -7,18 +7,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // Ruta temporal sin base de datos para testing
-$routes->get('/', 'PrincipalSimple::index');
-$routes->post('/', 'PrincipalSimple::index');
+$routes->get('/', 'Principal::index');
+$routes->post('/', 'Principal::index');
 
 // Ruta original (comentada temporalmente)
 // $routes->get('/', 'Principal::index');
 // $routes->post('/', 'Principal::index');
 
-// Rutas de prueba
-$routes->get('/test', 'Test::index');
-$routes->get('/simple', 'Test::simple');
-$routes->get('/dbtest', 'DbTest::index');
-$routes->get('/nodbtest', 'NoDbTest::index');
-$routes->get('/nodbhtml', 'NoDbTest::html');
+
 
 
