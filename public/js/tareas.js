@@ -20,7 +20,8 @@ $(document).ready(function () {
             success: function (resp) {
                 console.log("Respuesta del servidor:", resp);
                 if (resp.status === "ok") {
-                    $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
+                    // $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
+                    $chk.data("estado", resp.estado);
                     $chk.prop('checked', resp.estado == 1);
                     
                     
