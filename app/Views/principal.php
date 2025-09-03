@@ -130,14 +130,9 @@ header h1
         <p class="m-0 mt-3"><?= ($tarea->estado == 0 ) ? $tarea->nombre : '<s>'.$tarea->nombre.'</s>'  ?></p>
         <p class="date">
    <p class="date">
-    <?php
-    try {
-        $fechaValida = (strtotime($tarea->fecha) > 0);
-        echo $fechaValida ? date('d-m-Y', strtotime($tarea->fecha)) : 'Fecha próxima';
-    } catch (Exception $e) {
-        echo 'Fecha reciente';
-    }
-    ?>
+    <p class="date">
+      <?= date('d-m-Y', strtotime($tarea->fecha)) ?>
+    </p>
 </p>
         </div>
         <div class="actions">
