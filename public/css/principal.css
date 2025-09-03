@@ -92,22 +92,115 @@ header h1
   font-size: 14px;
 }
 
-/* celulares pequeños */
+/* Celulares pequeños (max-width: 576px) */
 @media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .list {
+        padding: 0.8rem;
+        margin: 8px;
+    }
+    
+    .task {
+        padding: 0.5rem;
+    }
+    
+    .task form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .actions {
+        position: relative;
+        margin: 0.5rem 0;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    .actions form .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .add, .add:hover {
+        position: relative;
+        left: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .top {
+        margin: 0 0 2rem 0;
+    }
+    
+    .filter {
+        position: relative;
+        right: 0;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .task .task_info {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+    
+    .task .task_info .date {
+        font-size: 12px;
+    }
 }
 
-/* celulares grandes */
+/* Celulares grandes (min-width: 577px) and (max-width: 768px) */
 @media (min-width: 577px) and (max-width: 768px) {
+    header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .list {
+        padding: 0.9rem;
+    }
+    
+    .actions {
+        margin: 1rem;
+    }
+    
+    .actions form .btn {
+        padding: 0.5rem 0.9rem;
+    }
+    
+    .task .task_info .date {
+        font-size: 13px;
+    }
 }
 
-/* Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
+    .list {
+        max-width: 90%;
+        margin: 10px auto;
+    }
+    
+    .task {
+        padding: 0.8rem 1rem;
+    }
 }
 
-/* Laptops  */
 @media (min-width: 1025px) and (max-width: 1200px) {
+    .list {
+        max-width: 80%;
+        margin: 15px auto;
+    }
 }
 
-/* Escritorios grandes */
 @media (min-width: 1201px) {
+    .list {
+        max-width: 70%;
+        margin: 20px auto;
+    }
+    
+    .task {
+        padding: 1rem 1.2rem;
+    }
 }
