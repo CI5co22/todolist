@@ -217,6 +217,18 @@ header h1 {
         font-size: 12px;
     }
     
+    /* Specific adjustments for your HTML structure */
+    .task input[type="checkbox"] {
+        width: 2rem !important;
+        height: 2rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+    
+    .task .d-flex {
+        flex-wrap: nowrap;
+    }
+    
     /* Stack actions vertically on very small screens */
     @media screen and (max-width: 320px) {
         .actions {
@@ -227,6 +239,22 @@ header h1 {
         .actions form .btn {
             width: 100%;
             text-align: center;
+        }
+        
+        .task {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .task input[type="checkbox"] {
+            margin-bottom: 0.5rem;
+        }
+        
+        .actions {
+            position: static;
+            transform: none;
+            align-self: flex-end;
+            margin-top: 0.5rem;
         }
     }
 }
@@ -243,5 +271,3 @@ header h1 {
         margin: 0 auto 3rem auto;
     }
 }
-
-/*comentario para deploy  */
