@@ -17,17 +17,17 @@ class Principal extends BaseController
     {
 
         if(isset($_GET['mostrar']))
-        {
-            
+        {   
             $status = $_GET['mostrar'];
 
-             switch($status)
+            if($status == 'verTodo')
             {
-                case 'verTodo':
-                    $datos['lista'] = $this->modelo->findAll();
-                    break;
-                default: $datos['lista'] = $this->modelo->estado($status);;
-            }  
+                $this->modelo->findAll();
+            }
+            else
+            {
+                $this->modelo->estado($status);
+            }
  
         }
         else
