@@ -26,7 +26,7 @@ class Principal extends BaseController
                 case 'verTodo':
                     $datos['lista'] = $this->modelo->findAll();
                     break;
-                default: $datos['lista'] = $this->modelo->getPrioridad($status);;
+                default: $datos['lista'] = $this->modelo->estado($status);;
             }  
  
         }
