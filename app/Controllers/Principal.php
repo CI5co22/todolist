@@ -20,13 +20,38 @@ class Principal extends BaseController
         {
             $status = $_GET['mostrar'];
 
-            if($status == 2)
+            if($status != 'verTodo')
             {
-                $datos['lista'] = $this->modelo->findAll();
+                 $datos['lista'] = $this->modelo->estado($status);
             }
             else
             {
-                            $datos['lista'] = $this->modelo->estado($status);
+                $datos['lista'] = $this->modelo->findAll();            
+            }           
+        }
+        else
+        {
+            $datos['lista'] = $this->modelo->findAll();
+        }
+
+        
+
+        if(isset($_GET['verPrioridad']))
+        {
+            $prioridad = $_GET['verPrioridad'];
+
+            switch($prioridad)
+            {
+                case 'Alta':
+                    $datos['lista'] = $this->modelo->getPrioridad($prioridad);
+                    break;
+                case 'Media':
+                    $datos['lista'] = $this->modelo->getPrioridad($prioridad);
+                    break;
+                case 'Baja':
+                    $datos['lista'] = $this->modelo->getPrioridad($prioridad);
+                    break;
+                default: $datos['lista'] = $this->modelo->findAll();
             }           
         }
         else

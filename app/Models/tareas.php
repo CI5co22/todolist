@@ -36,6 +36,14 @@ class tareas extends Model
         ->get()
         ->getResult();
     }
+    public function getPrioridad($prioridad)
+    {
+        return $this->db->table('tareas')
+        ->select('*')
+        ->where('prioridad',$prioridad)
+        ->get()
+        ->getResult();
+    }
 
     public function checkEstado($id)
     {

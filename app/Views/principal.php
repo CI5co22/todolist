@@ -14,21 +14,23 @@
         </button>
         
         <div class="filter-container d-flex">
-            <form action="./" method="GET" class="me-1">
-                <select onchange="this.form.submit()" class="filter form-select fw-bold" name="mostrar">
-                    <option value="2" selected>All</option>
-                    <option value="1">Complete</option>
-                    <option value="0">Incomplete</option>
-                </select>
-            </form>
             <form action="./" method="GET">
                 <select onchange="this.form.submit()" class="filter form-select fw-bold" name="verPrioridad">
                     <option  disabled selected>Prioridad</option>
+                    <option value="Todo">Ver Todo</option>
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
                     <option value="Baja">Prioridad</option>
                 </select>
             </form>
+            <form action="./" method="GET" class="ms-1">
+                <select onchange="this.form.submit()" class="filter form-select fw-bold" name="mostrar">
+                    <option value="verTodo" selected>All</option>
+                    <option value="1">Complete</option>
+                    <option value="0">Incomplete</option>
+                </select>
+            </form>
+            
         </div>
     </div>
     
