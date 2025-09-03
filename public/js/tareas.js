@@ -4,8 +4,14 @@ $(document).ready(function () {
         let id = $(this).data("id");
         let lastEstado = $(this).data("estado");
         let nuevoEstado = $(this).is(":checked") ? 1 : 0;
+        let $texto = $chk.siblings(".tarea-nombre");
 
-        // $chk.data("estado", nuevoEstado);
+        $chk.data("estado", nuevoEstado);
+        if (nuevoEstado == 1) {
+            $texto.addClass('completada');
+        } else {
+            $texto.removeClass('completada');
+        }
 
         $.ajax({
             url: urlCambiarEstado,
@@ -14,15 +20,17 @@ $(document).ready(function () {
             success: function (resp) {
                 console.log("Respuesta del servidor:", resp);
                 if (resp.status === "ok") {
-                $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
-                
-                
-                let $texto = $chk.siblings(".tarea-nombre");
-                if(resp.estado == 1){
-                     $texto.addClass('completada');
-                } else {
-                     $texto.removeClass('completada'); 
-                }
+                    $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
+                    $chk.prop('checked', resp.estado == 1);
+                    
+                    
+                    if (resp.estado != nuevoEstado) {
+                        if (resp.estado == 1) {
+                            $texto.addClass('completada');
+                        } else {
+                            $texto.removeClass('completada');
+                        }
+                    }
             }
             },
             error: function(xhr, status, error){
