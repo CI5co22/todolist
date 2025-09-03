@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="modal-footer container-fluid">
-                    <button type="submit" name="add" class="btn btnAction"><b>Add</b></button>
+                    <button type="submit" name="add" class="btn btnAction w-100"><b>Add</b></button>
                 </div>
             </form>
         </div>
