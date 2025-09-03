@@ -1,21 +1,16 @@
 <?php
-$host = $_ENV['MYSQLHOST'];
-$user = $_ENV['MYSQLUSER'];
-$pass = $_ENV['MYSQLPASSWORD'];
-$db = $_ENV['MYSQL_DATABASE'];
-$port = (int) $_ENV['MYSQLPORT'];
+// ... tu código de conexión ...
 
-$conn = new mysqli($host, $user, $pass, $db, $port);
+// Query alternativo más detallado
+$result = $conn->query("SHOW CREATE TABLE tareas");
 
-// SOLUCIÓN NUCLEAR: Eliminar TODOS los registros existentes
-$conn->query("DELETE FROM tareas");
-
-// REINICIAR el autoincrement
-$conn->query("ALTER TABLE tareas AUTO_INCREMENT = 1");
-
-echo "💥 BASE DE DATOS COMPLETAMENTE LIMPIA<br>";
-echo "🗑️ TODOS los registros eliminados<br>";
-echo "🔁 Auto increment reiniciado a 1";
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    echo "<h3>📋 CREATE TABLE STATEMENT</h3>";
+    echo "<pre>" . $row['Create Table'] . "</pre>";
+} else {
+    echo "No se pudo obtener la estructura de la tabla";
+}
 
 $conn->close();
 ?>
