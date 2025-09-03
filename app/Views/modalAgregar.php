@@ -10,6 +10,11 @@
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Título</label>
                         <input required type="text" name="title" class="form-control" id="recipient-name">
+                        <select name="" id="">
+                            <option value="">Alta</option>
+                            <option value="">Media</option>
+                            <option value="">Baja</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Estado</label>
