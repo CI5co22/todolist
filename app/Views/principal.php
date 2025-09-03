@@ -12,16 +12,13 @@ header h1 {
     color: #323554;
 }
 
-.main {
-    width: 100%;
-    padding: 1rem;
-}
+
 
 .list {
     background-color: #E1E2E8;
     border-radius: 8px; 
     padding: 1rem;
-    margin: 10px 0;
+    margin: 10px;
 }
 
 .task {
@@ -29,9 +26,7 @@ header h1 {
     padding: 0.8rem 1rem;
     border-radius: 8px;
     position: relative;
-    display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .task form {
@@ -67,10 +62,9 @@ header h1 {
 .top {
     position: relative;
     margin: 0 0 2rem 0;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+   
 }
 
 .filter {
