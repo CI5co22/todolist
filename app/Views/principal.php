@@ -20,7 +20,7 @@
                     <option value="Todo">Ver Todo</option>
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
-                    <option value="Baja">Prioridad</option>
+                    <option value="Baja">Baja</option>
                 </select>
             </form>
             <form action="./" method="GET" class="ms-1">
