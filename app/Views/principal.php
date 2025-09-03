@@ -63,7 +63,7 @@
 </section>
 
 <!-- modal -->
-<?= view('modalAgrgegar') ?>
+<?= view('modalAgregar') ?>
 
 <!-- modal editar -->
 <?= view('modalEdit') ?>
