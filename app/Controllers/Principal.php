@@ -23,10 +23,12 @@ class Principal extends BaseController
             if($status == 'verTodo')
             {
                 $this->modelo->findAll();
+                echo 'paso por aqui';
             }
             else
             {
                 $this->modelo->estado($status);
+                echo 'paso por aca';
             }
  
         }
