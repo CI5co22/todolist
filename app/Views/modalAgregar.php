@@ -22,7 +22,7 @@
                         <div class="child2">
                             <label for="message-text" class="col-form-label">Prioridad</label>
                             <select name="prioridad" class="form-select">
-                                <option value="Alta">🔴 Alta </option>
+                                <option  selected value="Alta">🔴 Alta </option>
                                 <option value="Media">🟡 Media</option>
                                 <option value="Baja">⚫ Baja</option>
                             </select>
