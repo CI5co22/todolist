@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".chk-estado").on("change", function () {
+        let $chk = $(this);
         let id = $(this).data("id");
         let lastEstado = $(this).data("estado");
         let nuevoEstado = $(this).is(":checked") ? 1 : 0;
