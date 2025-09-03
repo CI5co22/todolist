@@ -1,0 +1,113 @@
+  
+:root
+{
+    --principal: #685DFC;
+}
+
+header h1 
+{
+  font-weight: 900;
+  color: #323554
+}
+
+
+.list
+{
+  background-color: #E1E2E8;
+  border-radius: 8px; 
+  padding: 1rem;
+  margin: 10px;
+}
+
+.task
+{
+  background-color: white;
+  padding: 0rem 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.task form {
+  display: flex;
+  align-items: center;
+}
+
+
+.actions
+{
+   position: absolute;
+   right: 0;
+   margin: 1.3rem;
+    display: flex;
+  align-items: center;
+}
+
+.actions form .btn
+{
+  background-color: #E3E3E3;
+}
+
+.actions form .btn:hover
+{
+  background-color: var(--principal);
+  color:white;
+}
+
+.add, .add:hover
+{
+  background-color: var(--principal);
+  position: absolute;
+  left: 0.2rem;
+  transition: 0.3s;
+}
+
+.btn:hover
+{
+  transform: scale(1.07);
+}
+
+.top
+{
+  position: relative;
+  margin: 0 0 3rem 0;
+}
+
+.filter
+{
+  background-color: #E3E3E3;
+  position: absolute;
+  right: 0.6rem;
+  border: none;
+  color: #616161;
+}
+
+.task .task_info
+{
+  margin: 0 0 0 0.7rem;
+  text-align: left;
+}
+
+.task .task_info .date
+{
+  font-size: 14px;
+}
+
+/* celulares pequeños */
+@media (max-width: 576px) {
+}
+
+/* celulares grandes */
+@media (min-width: 577px) and (max-width: 768px) {
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+/* Laptops  */
+@media (min-width: 1025px) and (max-width: 1200px) {
+}
+
+/* Escritorios grandes */
+@media (min-width: 1201px) {
+}
