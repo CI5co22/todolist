@@ -18,7 +18,11 @@ class Principal extends BaseController
 
         if(isset($_GET['mostrar']))
         {
+            
             $status = $_GET['mostrar'];
+
+            var_dump($status);
+            exit;
 
             if($status == 'verTodo')
             {
