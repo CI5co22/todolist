@@ -81,7 +81,6 @@ class Principal extends BaseController
             {
                 $this->modelo->checkEstado($id);
                 $newEstado = 1;
-                
             }
             else
             {
