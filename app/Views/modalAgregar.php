@@ -12,16 +12,16 @@
                         <input required type="text" name="title" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3 d-flex container container-fluid">
-                        <div class="">
+                        <div class="child1">
                             <label for="message-text" class="col-form-label">Estado</label>
-                            <select name="status" class="form-select w-75">
+                            <select name="status" class="form-select">
                                 <option value="0">Incomplete</option>
                                 <option value="1">Complete</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="child2">
                             <label for="message-text" class="col-form-label">Prioridad</label>
-                            <select name="" id="" class="form-select w-100">
+                            <select name="" id="" class="form-select">
                                 <option value="">Alta</option>
                                 <option value="">Media</option>
                                 <option value="">Baja</option>

@@ -25,6 +25,16 @@ header h1 {
     text-decoration: line-through;
 }
 
+.child1
+{
+    width: 70%
+}
+
+.child2
+{
+    width: 30%
+}
+
 
 .task {
     background-color: white;
