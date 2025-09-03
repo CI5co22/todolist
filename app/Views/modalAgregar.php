@@ -22,9 +22,9 @@
                         <div class="child2">
                             <label for="message-text" class="col-form-label">Prioridad</label>
                             <select name="prioridad" class="form-select">
-                                <option value="Alta">Alta</option>
-                                <option value="Media">Media</option>
-                                <option value="Baja">Baja</option>
+                                <option value="Alta"><i class="fa-solid fa-circle me-1 p1"></i> Alta </option>
+                                <option value="Media"><i class="fa-solid fa-circle me-1 p2"></i> Media</option>
+                                <option value="Baja"><i class="fa-solid fa-circle me-1 p3"></i> Baja</option>
                             </select>
                         </div>
                     </div>
