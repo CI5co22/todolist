@@ -81,11 +81,12 @@ class Principal extends BaseController
             {
                 $this->modelo->checkEstado($id);
                 $newEstado = 1;
-                $newEstado = 0;
+                
             }
             else
             {
-                $this->modelo->uncheckEstado($id);         
+                $this->modelo->uncheckEstado($id);
+                $newEstado = 0;      
             }
 
              return $this->response->setJSON([
