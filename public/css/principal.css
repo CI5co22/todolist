@@ -44,6 +44,7 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
 }
 
 .task input[type="checkbox"] {
@@ -139,7 +140,7 @@ header h1 {
 
 .corner
 {
-    height:4.8rem;
+    height:100%;
     position: absolute;
     border-radius: 8px 0 0 8px; 
 }
