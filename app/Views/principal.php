@@ -2,10 +2,6 @@
 
 <?=  $this->section('contenido') ?>
 
-<style>
-
-</style>
-
 <header data-bs-theme="dark" class="mt-4 mb-4 text-center">
   <h1>TODO LIST</h1>
 </header>
