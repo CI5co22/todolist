@@ -28,7 +28,7 @@
     <div class="list">
         <?php foreach($lista as $tarea): ?>
         <div class="task mb-3">
-            <div class="p-1  m-0 p-0 corner"  data-prioridad="<?= $tarea->prioridad ?>" style="height:2.7rem"></div>
+            <div class="p-1  m-0 p-0 corner"  data-prioridad="<?= $tarea->prioridad ?>"></div>
            <input type="checkbox" 
             class="chk-estado ms-3" 
             data-id="<?= $tarea->id ?>" 
