@@ -124,9 +124,7 @@ header h1 {
 }
 
 /* prioridades */
-.p1{color:red}
-.p2{color: orange}
-.p3{color: gray}
+
 
 
 @media screen and (max-width: 992px) {

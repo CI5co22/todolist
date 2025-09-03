@@ -13,7 +13,7 @@ class tareas extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['id','nombre','estado','fecha'];
+    protected $allowedFields = ['id','nombre','estado','fecha','prioridad'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
