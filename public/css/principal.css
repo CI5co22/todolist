@@ -104,7 +104,7 @@ header h1 {
     cursor: pointer;
 }
 
-.add {
+.btnAction {
     background-color: var(--principal) !important;
     transition: all 0.3s ease;
     color: white !important;
@@ -113,7 +113,7 @@ header h1 {
     gap: 0.5rem;
 }
 
-.add:hover {
+.btnAction:hover {
     transform: scale(1.07);
 }
 
