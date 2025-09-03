@@ -15,30 +15,6 @@ class Principal extends BaseController
 
     public function index()
     {
-
-        if(isset($_GET['mostrar']))
-        {   
-            $status = $_GET['mostrar'];
-
-            if($status == 'verTodo')
-            {
-                $datos['lista'] = $this->modelo->findAll();
-                
-            }
-            else
-            {
-                $datos['lista'] = $this->modelo->estado($status);
-                
-            }
- 
-        }
-        else
-        {
-            $datos['lista'] = $this->modelo->findAll();
-        }
-
-        
-
         if(isset($_GET['verPrioridad']))
         {
             $prioridad = $_GET['verPrioridad'];
@@ -57,12 +33,28 @@ class Principal extends BaseController
                 default: $datos['lista'] = $this->modelo->findAll();
             }           
         }
+
+        if(isset($_GET['mostrar']))
+        {   
+            $status = $_GET['mostrar'];
+
+            if($status == 'verTodo')
+            {
+                $datos['lista'] = $this->modelo->findAll();
+                
+            }
+            else
+            {
+                $datos['lista'] = $this->modelo->estado($status);
+            }
+ 
+        }
         else
         {
             $datos['lista'] = $this->modelo->findAll();
         }
 
-
+    
         if(isset($_POST['add']))
         {
             $datos = [
