@@ -182,15 +182,33 @@ header h1 {
     }
 }
 
-@media screen and (max-width: 320px) {
-    .actions {
+@media screen and (max-width: 280px) {
+    /* Solo en pantallas MUY pequeñas cambiamos a vertical */
+    .task {
         flex-direction: column;
-        gap: 0.25rem;
+        align-items: flex-start;
+    }
+    
+    .task input[type="checkbox"] {
+        margin-bottom: 0.5rem;
+        align-self: flex-start;
+    }
+    
+    .task_info {
         width: 100%;
+        padding-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .actions {
+        position: static;
+        transform: none;
+        align-self: flex-end;
     }
     
     .actions .btn {
         width: 100%;
         text-align: center;
+        margin-bottom: 0.25rem;
     }
 }
