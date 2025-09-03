@@ -28,8 +28,12 @@
     <div class="list">
         <?php foreach($lista as $tarea): ?>
         <div class="task mb-3">
-            <input type="checkbox" name="check" value="<?= $tarea->id ?>" 
-                  onChange="document.getElementById('form-<?= $tarea->id ?>').submit()">
+           <input type="checkbox" 
+            class="chk-estado" 
+            data-id="<?= $tarea->id ?>" 
+            data-estado="<?= $tarea->estado ?>" 
+            <?= $tarea->estado == 1 ? 'checked' : '' ?>>
+
             
             <form id="form-<?= $tarea->id ?>" method="POST" action="./" style="display:none;">
                 <input type="hidden" name="check" value="<?= $tarea->id ?>">

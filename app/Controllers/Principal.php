@@ -56,23 +56,7 @@ class Principal extends BaseController
             $datos['lista'] = $this->modelo->findAll();
         }
 
-        if(isset($_POST['check']))
-        {
-            $last_estado = $_POST['lastEstado'];
-            $id = $_POST['check'];
-
-            if($last_estado == 0) /* Si no esta completado */
-            {
-                $this->modelo->checkEstado($id);
-                
-            }
-            else
-            {
-                $this->modelo->uncheckEstado($id);         
-            }
-
-            $datos['lista'] = $this->modelo->findAll();
-        }
+        
 
         if(isset($_POST['update']))
         {
@@ -81,10 +65,35 @@ class Principal extends BaseController
 
             $this->modelo->updTitle($id,$title);
             $datos['lista'] = $this->modelo->findAll();
-
         }
 
         return view('principal',$datos);
+    }
+
+    public function cambiarEstado()
+    {
+        if(isset($_POST['check']))
+        {
+            $last_estado = $_POST['lastEstado'];
+            $id = $_POST['check'];
+
+            if($last_estado == 0) /* Si no esta completado */
+            {
+                $this->modelo->checkEstado($id);
+                $newEstado = 1;
+                $newEstado = 0;
+            }
+            else
+            {
+                $this->modelo->uncheckEstado($id);         
+            }
+
+             return $this->response->setJSON([
+                'status' => 'ok',
+                'id' => $id,
+                'estado' => $nuevoEstado
+            ]);
+        }
     }
 
   
