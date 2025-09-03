@@ -7,9 +7,9 @@ $port = (int) $_ENV['MYSQLPORT'];
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
-// ELIMINAR registros con fechas inválidas
-$conn->query("DELETE FROM tareas WHERE fecha = '0000-00-00 00:00:00' OR fecha LIKE '%-0001%'");
+// SOLUCIÓN: Actualizar fechas inválidas a fecha actual
+$conn->query("UPDATE tareas SET fecha = NOW() WHERE fecha = '0000-00-00 00:00:00' OR fecha LIKE '%-0001%' OR fecha IS NULL");
 
-echo "✅ REGISTROS CON FECHAS INVÁLIDAS ELIMINADOS";
+echo "✅ FECHAS INVÁLIDAS ACTUALIZADAS A FECHA ACTUAL";
 $conn->close();
 ?>
