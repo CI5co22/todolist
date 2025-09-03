@@ -12,8 +12,8 @@
                         <input required type="text" name="title" class="form-control" id="edit-title">
                     </div>
                     <div class="mb-3">
-                    <select name="prioridad" class="form-select">
-                        <option value="Alta">🔴 Alta </option>
+                    <select id="selectPrioridad" name="prioridad" class="form-select">
+                        <option value="Alta"  >🔴 Alta </option>
                         <option value="Media">🟡 Media</option>
                         <option value="Baja">⚫ Baja</option>
                     </select>

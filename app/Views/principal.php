@@ -49,7 +49,7 @@
             </div>
             
             <div class="actions">
-                <button data-id="<?= $tarea->id ?>" data-title="<?= $tarea->nombre ?>" name="edit" class="btn" data-bs-toggle="modal" data-bs-target="#editModal">
+                <button data-prioridad="<?= $tarea->prioridad ?>" data-id="<?= $tarea->id ?>" data-title="<?= $tarea->nombre ?>" name="edit" class="btn" data-bs-toggle="modal" data-bs-target="#editModal">
                     <i class="fa-solid fa-edit"></i>
                 </button>
                 <form action="./" method="post" style="display: inline;">

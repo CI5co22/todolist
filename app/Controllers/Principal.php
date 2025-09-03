@@ -15,7 +15,6 @@ class Principal extends BaseController
 
     public function index()
     {
-        $datos['title'] = 'TODO';
 
         if(isset($_GET['mostrar']))
         {
