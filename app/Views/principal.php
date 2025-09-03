@@ -2,6 +2,9 @@
 
 <?=  $this->section('contenido') ?>
 
+<style>
+
+</style>
 
 <header data-bs-theme="dark" class="mt-4 mb-4 text-center">
   <h1>TODO LIST</h1>
@@ -9,7 +12,10 @@
 
 <section class="main-container container p-3">
     <div class="top">
-        <button type="button" class="btn add text-white fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Task</button>
+        <button type="button" class="btn add text-white fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <span class="add-text">Add Task</span>
+            <span class="add-icon">+</span>
+        </button>
         
         <div class="filter-container">
             <form action="./" method="GET">
