@@ -41,7 +41,8 @@ class Principal extends BaseController
             $datos = [
                 'nombre' => $_POST['title'],
                 'estado' => $_POST['status'],
-                'fecha' => date('d-m-Y H:i:s')
+                'fecha' => date('Y-m-d H:i:s')
+                
             ];
 
             $this->modelo->insert($datos);

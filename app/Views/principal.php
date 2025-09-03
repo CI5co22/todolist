@@ -131,7 +131,7 @@ header h1
         <p class="date">
    <p class="date">
     <p class="date">
-      <?= date('d-m-Y', strtotime($tarea->fecha)) ?>
+      <?= $tarea->fecha ?>
     </p>
 </p>
         </div>
