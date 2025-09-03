@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer container-fluid">
+                <div class="modal-footer container-fluid text-center">
                     <button type="submit" name="add" class="btn btnAction w-100 text-center"><b>Add</b></button>
                 </div>
             </form>
