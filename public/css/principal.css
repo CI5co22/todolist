@@ -130,13 +130,19 @@ header h1 {
 }
 .p2
 {
-    background-color: orange;
+    background-color: yellow;
 }
 .p3
 {
-    background-color: greenyellow;
+    background-color: grey;
 }
 
+.corner
+{
+    height:4.8rem;
+    position: absolute;
+    border-radius: 8px 0 0 8px; 
+}
 
 @media screen and (max-width: 992px) {
     .main-container {
