@@ -128,7 +128,9 @@ header h1
 
         <div class="task_info">
         <p class="m-0 mt-3"><?= ($tarea->estado == 0 ) ? $tarea->nombre : '<s>'.$tarea->nombre.'</s>'  ?></p>
-        <p class="date"><?= $tarea->fecha ?></p>
+        <p class="date">
+    <?= date('d-m-Y', strtotime($tarea->fecha)) ?>
+</p>
         </div>
         <div class="actions">
           
