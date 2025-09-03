@@ -24,7 +24,7 @@
                             <select name="prioridad" class="form-select">
                                 <option value="Alta">🔴 Alta </option>
                                 <option value="Media">🟡 Media</option>
-                                <option value="Baja">🟢 Baja</option>
+                                <option value="Baja">⚫ Baja</option>
                             </select>
                         </div>
                     </div>
