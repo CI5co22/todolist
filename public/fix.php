@@ -8,16 +8,20 @@ $port = (int) $_ENV['MYSQLPORT'];
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
-// SQL para agregar AUTO_INCREMENT al ID
+// PRIMERO: Eliminar la primary key existente si existe
+$conn->query("ALTER TABLE tareas DROP PRIMARY KEY");
+
+// SEGUNDO: Agregar AUTO_INCREMENT y nueva primary key
 $sql = "ALTER TABLE tareas 
         MODIFY COLUMN id INT AUTO_INCREMENT PRIMARY KEY,
         MODIFY COLUMN fecha DATETIME DEFAULT CURRENT_TIMESTAMP";
 
 if ($conn->query($sql)) {
     echo "✅ TABLA REPARADA EXITOSAMENTE:<br>";
+    echo "- Primary key anterior removida<br>";
     echo "- AUTO_INCREMENT agregado al ID<br>";
+    echo "- Nueva primary key establecida<br>";
     echo "- Tipo de fecha cambiado a DATETIME<br>";
-    echo "- DEFAULT CURRENT_TIMESTAMP agregado<br>";
 } else {
     echo "❌ ERROR: " . $conn->error;
 }
