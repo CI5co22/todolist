@@ -1,5 +1,4 @@
 <?php
-// Conectar a la base de datos
 $host = $_ENV['MYSQLHOST'];
 $user = $_ENV['MYSQLUSER'];
 $pass = $_ENV['MYSQLPASSWORD'];
@@ -8,30 +7,9 @@ $port = (int) $_ENV['MYSQLPORT'];
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
-// PRIMERO: Eliminar la primary key existente si existe
-$conn->query("ALTER TABLE tareas DROP PRIMARY KEY");
+// ELIMINAR registros con fechas inválidas
+$conn->query("DELETE FROM tareas WHERE fecha = '0000-00-00 00:00:00' OR fecha LIKE '%-0001%'");
 
-// SEGUNDO: Agregar AUTO_INCREMENT y nueva primary key
-$sql = "ALTER TABLE tareas 
-        MODIFY COLUMN id INT AUTO_INCREMENT PRIMARY KEY,
-        MODIFY COLUMN fecha DATETIME DEFAULT CURRENT_TIMESTAMP";
-
-if ($conn->query($sql)) {
-    echo "✅ TABLA REPARADA EXITOSAMENTE:<br>";
-    echo "- Primary key anterior removida<br>";
-    echo "- AUTO_INCREMENT agregado al ID<br>";
-    echo "- Nueva primary key establecida<br>";
-    echo "- Tipo de fecha cambiado a DATETIME<br>";
-} else {
-    echo "❌ ERROR: " . $conn->error;
-}
-
-// Mostrar nueva estructura
-echo "<hr><h3>Nueva estructura:</h3>";
-$result = $conn->query("DESCRIBE tareas");
-while ($row = $result->fetch_assoc()) {
-    echo "{$row['Field']} - {$row['Type']} - {$row['Extra']}<br>";
-}
-
+echo "✅ REGISTROS CON FECHAS INVÁLIDAS ELIMINADOS";
 $conn->close();
 ?>
