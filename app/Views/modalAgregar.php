@@ -11,7 +11,7 @@
                         <label for="recipient-name" class="col-form-label">Título</label>
                         <input required type="text" name="title" class="form-control" id="recipient-name">
                     </div>
-                    <div class="mb-3 d-flex">
+                    <div class="mb-3 d-flex container container-fluid">
                         <div class="">
                             <label for="message-text" class="col-form-label">Estado</label>
                             <select name="status" class="form-select w-75">
