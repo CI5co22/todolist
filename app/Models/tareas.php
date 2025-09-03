@@ -54,8 +54,10 @@ class tareas extends Model
     {
         $this->db->table('tareas')
         ->where('id', $id)
-        ->update(['nombre' => $title])
-        ->update(['prioridad' => $prioridad]);
+        ->update([
+            'nombre' => $title,
+            'prioridad' => $prioridad
+        ]);
     }
 
  }
