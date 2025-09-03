@@ -188,7 +188,7 @@ header h1 {
     }
     
     .task {
-        padding: 0.75rem;
+        padding: 0.75rem 0.75rem 0.75rem 0 ;
         gap: 0.4rem;
     }
     
