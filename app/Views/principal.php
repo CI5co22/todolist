@@ -8,7 +8,7 @@
 
 <section class="main-container container p-3">
     <div class="top">
-        <button type="button" class="btn add text-white fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btnAction text-white fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <span class="add-text">Add Task</span>
             <span class="add-icon"><i class="fa-solid fa-plus"></i></span>
         </button>

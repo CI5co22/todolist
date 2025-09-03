@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="add" class="btn">Agregar tarea</button>
+                    <button type="submit" name="add" class="btn btnAction">Agregar tarea</button>
                 </div>
             </form>
         </div>
