@@ -20,13 +20,13 @@ class Principal extends BaseController
         {
             $status = $_GET['mostrar'];
 
-            if($status != 'verTodo')
+            if($status == 'verTodo')
             {
-                 $datos['lista'] = $this->modelo->estado($status);
+                $datos['lista'] = $this->modelo->findAll();
             }
             else
             {
-                $datos['lista'] = $this->modelo->findAll();            
+                $datos['lista'] = $this->modelo->estado($status);
             }           
         }
         else
