@@ -3,39 +3,38 @@ $(document).ready(function () {
         let $chk = $(this);
         let id = $chk.data("id");
         let lastEstado = $chk.data("estado");
-        let nuevoEstado = $chk.is(":checked") ? 1 : 0;
         let $texto = $chk.siblings(".tarea-nombre");
 
-        // Cambio inmediato en la UI (sin esperar al servidor)
-        if (nuevoEstado == 1) {
-            $texto.addClass('completada');
-        } else {
-            $texto.removeClass('completada');
-        }
+        console.log("Antes - Estado:", lastEstado, "Checked:", $chk.is(":checked"));
 
         $.ajax({
             url: urlCambiarEstado,
             type: "POST",
             data: { check: id, lastEstado: lastEstado },
             success: function (resp) {
-                console.log("Respuesta del servidor:", resp);
+                console.log("Respuesta:", resp);
+                
                 if (resp.status === "ok") {
-                    // Actualizar el data attribute
                     $chk.data("estado", resp.estado);
-                    
-                    // Sincronizar el checkbox con la respuesta del servidor
                     $chk.prop('checked', resp.estado == 1);
                     
-                    // Actualizar la clase según la respuesta del servidor
+                    // Forzar reflow para asegurar que se aplique el CSS
+                    $texto.hide().show(0);
+                    
                     if (resp.estado == 1) {
                         $texto.addClass('completada');
+                        console.log("Añadiendo clase completada");
                     } else {
                         $texto.removeClass('completada');
+                        console.log("Removiendo clase completada");
                     }
+                    
+                    console.log("Después - Estado:", resp.estado, "Checked:", $chk.is(":checked"));
                 }
             },
-            error: function(xhr, status, error){ 
-                alert('Error al cambiar el estado');
+            error: function(xhr, status, error){
+                console.log("Error:", error);
+                $chk.prop('checked', lastEstado == 1);
             }
         });
     });
