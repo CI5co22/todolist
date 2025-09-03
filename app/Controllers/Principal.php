@@ -21,17 +21,14 @@ class Principal extends BaseController
             
             $status = $_GET['mostrar'];
 
-            var_dump($status);
-            exit;
-
-            if($status == 'verTodo')
+             switch($status)
             {
-                $datos['lista'] = $this->modelo->findAll();
-            }
-            else
-            {
-                $datos['lista'] = $this->modelo->estado($status);
-            }           
+                case 'verTodo':
+                    $datos['lista'] = $this->modelo->findAll();
+                    break;
+                default: $datos['lista'] = $this->modelo->getPrioridad($status);;
+            }  
+ 
         }
         else
         {
