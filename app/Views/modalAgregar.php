@@ -11,14 +11,14 @@
                         <label for="recipient-name" class="col-form-label">Título</label>
                         <input required type="text" name="title" class="form-control" id="recipient-name">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 d-flex">
                         <label for="message-text" class="col-form-label">Estado</label>
-                        <div>
-                        <select name="status" class="form-select">
+                        <div class="container container-fluid">
+                        <select name="status" class="form-select w-75">
                             <option value="0">Incomplete</option>
                             <option value="1">Complete</option>
                         </select>
-                        <select name="" id="">
+                        <select name="" id="" class="form-select w-100">
                             <option value="">Alta</option>
                             <option value="">Media</option>
                             <option value="">Baja</option>
