@@ -11,6 +11,13 @@
                         <label class="col-form-label">Título</label>
                         <input required type="text" name="title" class="form-control" id="edit-title">
                     </div>
+                    <div class="mb-3">
+                    <select name="prioridad" class="form-select">
+                        <option value="Alta">🔴 Alta </option>
+                        <option value="Media">🟡 Media</option>
+                        <option value="Baja">🟢 Baja</option>
+                    </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="update" id="edit-id" class="btn btn-primary">Actualizar tarea</button>
