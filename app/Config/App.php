@@ -205,12 +205,20 @@ class App extends BaseConfig
     {
         parent::__construct();
 
-        // Detecta automáticamente protocolo y host asignado por Railway
+                // Detección específica para Railway
         if (empty($this->baseURL)) {
-            $this->baseURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
-                          . '://'
-                          . ($_SERVER['HTTP_HOST'] ?? 'localhost')
-                          . '/';
+            // Railway pasa el host original en este header
+            $host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? 'localhost';
+            
+            // Railway siempre usa HTTPS en producción
+            $protocol = (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http';
+            
+            // Si estamos en un dominio de railway.app, forzar HTTPS
+            if (strpos($host, 'railway.app') !== false || strpos($host, 'up.railway.app') !== false) {
+                $protocol = 'https';
+            }
+            
+            $this->baseURL = $protocol . '://' . $host . '/';
         }
     }
 }
