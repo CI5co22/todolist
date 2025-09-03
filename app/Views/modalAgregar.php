@@ -12,7 +12,7 @@
                         <input required type="text" name="title" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3 d-flex container container-fluid">
-                        <div class="child1">
+                        <div class="child1 me-1">
                             <label for="message-text" class="col-form-label">Estado</label>
                             <select name="status" class="form-select">
                                 <option value="0">Incomplete</option>
