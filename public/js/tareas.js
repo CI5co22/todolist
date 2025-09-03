@@ -16,9 +16,9 @@ $(document).ready(function () {
                 }
                 let $texto = $chk.closest("p").find(".tarea-nombre");
                 if(resp.estado == 1){
-                    $texto.html('<s>' + $texto.text() + '</s>');
+                     $texto.addClass('completada');
                 } else {
-                    $texto.text($texto.text()); 
+                     $texto.removeClass('completada'); 
                 }
             },
             error: function(xhr, status, error){

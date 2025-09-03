@@ -21,6 +21,11 @@ header h1 {
     margin: 10px 0;
 }
 
+.completada {
+    text-decoration: line-through;
+}
+
+
 .task {
     background-color: white;
     padding: 1rem;

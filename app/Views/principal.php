@@ -41,7 +41,9 @@
             </form>
 
             <div class="task_info">
-                <p class="m-0 tarea-nombre"><?= ($tarea->estado == 0) ? $tarea->nombre : '<s>'.$tarea->nombre.'</s>' ?></p>
+                <p class="m-0 tarea-nombre <?= $tarea->estado == 1 ? 'completada' : '' ?>">
+                    <?= $tarea->nombre ?>
+                </p>
                 <p class="date"><?= $tarea->fecha ?></p>
             </div>
             
