@@ -12,7 +12,10 @@ header h1 {
     color: #323554;
 }
 
-
+.main
+{
+  width: 50%;
+}
 
 .list {
     background-color: #E1E2E8;
