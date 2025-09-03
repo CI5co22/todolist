@@ -41,7 +41,8 @@ class Principal extends BaseController
             $datos = [
                 'nombre' => $_POST['title'],
                 'estado' => $_POST['status'],
-                'fecha' => date('Y-m-d H:i:s')
+                'fecha' => date('Y-m-d H:i:s'),
+                'prioridad' => $_POST['prioridad']
                 
             ];
 
