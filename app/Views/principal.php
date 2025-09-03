@@ -66,7 +66,7 @@
 <?= view('modalAgregar') ?>
 
 <!-- modal editar -->
-<?= view('modalEdit') ?>
+<?= view('modalEditar') ?>
 
 <script>
     const urlCambiarEstado = "<?= base_url('cambiarEstado') ?>";
