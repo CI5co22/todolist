@@ -10,12 +10,13 @@ $(document).ready(function () {
             data: { check: id, lastEstado: lastEstado },
             success: function (resp) {
                 console.log("Respuesta del servidor:", resp);
-
                 if (resp.status === "ok") {
                     $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
                 }
             },
             error: function () {
+                console.error("Error AJAX:", status, error);
+                console.error("Respuesta servidor:", xhr.responseText);
                 alert("Error al actualizar tarea");
             }
         });
