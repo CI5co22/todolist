@@ -82,7 +82,7 @@ header h1 {
 .actions .btn:hover {
     background-color: var(--principal);
     color: white;
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 .top {
