@@ -110,6 +110,7 @@ header h1 {
     color: white !important;
     display: flex;
     align-items: center;
+    text-align: center;
     gap: 0.5rem;
 }
 
