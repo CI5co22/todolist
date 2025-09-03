@@ -62,8 +62,9 @@ class Principal extends BaseController
         {
             $id = $_POST['update'];
             $title = $_POST['title'];
+            $prioridad = $_POST['prioridad'];
 
-            $this->modelo->updTitle($id,$title);
+            $this->modelo->updTitle($id,$title,$prioridad);
             $datos['lista'] = $this->modelo->findAll();
         }
 

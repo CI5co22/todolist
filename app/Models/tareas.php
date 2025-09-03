@@ -50,11 +50,12 @@ class tareas extends Model
 
     }
 
-    public function updTitle($id,$title)
+    public function updTitle($id,$title,$prioridad)
     {
         $this->db->table('tareas')
         ->where('id', $id)
-        ->update(['nombre' => $title]);
+        ->update(['nombre' => $title])
+        ->update(['prioridad' => $prioridad]);
     }
 
  }
