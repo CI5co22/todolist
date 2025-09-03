@@ -5,6 +5,8 @@ $(document).ready(function () {
         let lastEstado = $(this).data("estado");
         let nuevoEstado = $(this).is(":checked") ? 1 : 0;
 
+        // $chk.data("estado", nuevoEstado);
+
         $.ajax({
             url: urlCambiarEstado,
             type: "POST",
@@ -12,8 +14,8 @@ $(document).ready(function () {
             success: function (resp) {
                 console.log("Respuesta del servidor:", resp);
                 if (resp.status === "ok") {
-                    $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
-                }
+                $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
+                
                 
                 let $texto = $chk.siblings(".tarea-nombre");
                 if(resp.estado == 1){
@@ -21,6 +23,7 @@ $(document).ready(function () {
                 } else {
                      $texto.removeClass('completada'); 
                 }
+            }
             },
             error: function(xhr, status, error){
                 console.log("Error AJAX:", status, error);
