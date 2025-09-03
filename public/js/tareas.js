@@ -14,7 +14,8 @@ $(document).ready(function () {
                 if (resp.status === "ok") {
                     $(`.chk-estado[data-id="${resp.id}"]`).data("estado", resp.estado);
                 }
-                let $texto = $chk.closest("p").find(".tarea-nombre");
+                
+                let $texto = $chk.siblings(".tarea-nombre");
                 if(resp.estado == 1){
                      $texto.addClass('completada');
                 } else {
