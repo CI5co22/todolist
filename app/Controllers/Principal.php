@@ -89,10 +89,10 @@ class Principal extends BaseController
                 $newEstado = 0;      
             }
 
-             return $this->response->setJSON([
+            return $this->response->setJSON([
                 'status' => 'ok',
                 'id' => $id,
-                'estado' => $nuevoEstado
+                'estado' => $newEstado
             ]);
         }
     }

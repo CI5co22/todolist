@@ -15,7 +15,7 @@ $(document).ready(function () {
                 }
             },
             error: function(xhr, status, error){
-                console.error("Error AJAX:", status, error);
+                console.log("Error AJAX:", status, error);
                 alert('error ddd');
             }
         });
